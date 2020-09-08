@@ -58,9 +58,10 @@ module.exports = (() => {
             const root = `${domain}.${topLevelDomains.join(".")}`;
 
             if (clear) delete audits[host];
+
             const prevAudit = audits[host];
             if (prevAudit && moment().diff(moment(prevAudit.timestamp), 'm') < AUDIT_CACHE_TIME_IN_MINS) {
-                return audits[host];
+                return prevAudit;
             }
 
             const page = await browser.newPage();
