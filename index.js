@@ -14,7 +14,7 @@ app.use(helmet());
         process.exit(1);
     }
 
-    app.get("/", async (req, res) => {
+    app.get("/sri-audit", async (req, res) => {
         const { host, clear } = req.query;
         if (!host) return res.json({ error: "`host` query parameter is required" });
         console.log(`auditing ${host}`);
